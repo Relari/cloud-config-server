@@ -1,0 +1,25 @@
+server.port: 8888
+spring:
+  application:
+    name: 'cloud-config-server'
+  cloud:
+    config:
+      server:
+        git:
+          default-label: master
+          uri: https://github.com/Relari/cloud-config-properties.git #Development
+#          uri: ${user.home}/Documents/workspace-spring-tool-suite-4-4.9.0.RELEASE/demo-cloud-properties #Local
+          searchPaths: config-properties
+#          username: ${GIT_USER}
+#          password: ${GIT_PASSWORD} #Personal Access Token
+#  security:
+#    user:
+#      name: root
+#      password: s3cr3t
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:@project.version@
+  client:
+    serviceUrl:
+      defaultZone: 'http://localhost:8090/eureka/'
